@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <title>Debian Apt-Mirror</title>
+
+        <link rel="shortcut icon" href="https://www.debian.org/favicon.ico">
+        <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link href="http://getbootstrap.com/examples/sticky-footer/sticky-footer.css" rel="stylesheet">
+        <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+        <!--[if lt IE 9]><script src="http://getbootstrap.com/assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+        <script src="http://getbootstrap.com/assets/js/ie-emulation-modes-warning.js"></script>
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+    </head>
+    <body>
+        <div class="container">
+            <div class="page-header">
+                <h1><img src="https://www.debian.org/Pics/openlogo-50.png" alt="Debian">&nbsp;APT-MIRROR</h1>
+            </div>
+            <p class="text-muted">
+                Para utilizar este mirror, você deverá abrir o arquivo /etc/apt/source.list com o editor de texto de sua preferência e adicionar os seguintes endereços de repositórios:
+            </p>
+            <p class="jumbotron">
+                <strong># Debian Repository - Lenny</strong><br/>
+                deb http://192.168.69.69/debian/ lenny main contrib non-free<br/>
+                deb-src http://192.168.69.69/debian/ lenny main contrib non-free<br/>
+                <br/>
+                <strong># Debian Repository - Lenny Security</strong><br/>
+                deb http://192.168.69.69/debian-security lenny/updates main contrib non-free<br/>
+                deb-src http://192.168.69.69/debian-security lenny/updates main contrib non-free<br/>
+            </p>
+            <p class="text-danger"><strong>obs: 192.168.69.69 é o ip do servidor mirror</strong></p>
+        </div>
+        <footer class="footer">
+            <div class="container">
+                <p class="text-muted">Vagrant Debian Apt-Mirror</p>
+            </div>
+        </footer>
+        <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+        <script src="http://getbootstrap.com/assets/js/ie10-viewport-bug-workaround.js"></script>
+    </body>
+</html>
