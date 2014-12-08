@@ -24,10 +24,12 @@ echo $HOSTS >> /etc/hosts
 
 # UPDATE =======================================================================
 export DEBIAN_FRONTEND=noninteractive
-echo "deb ftp://ftp.br.debian.org/debian/ lenny main contrib non-free" >> /etc/apt/source.list
+echo "deb ftp://ftp.br.debian.org/debian/ wheezy main contrib non-free" >> /etc/apt/source.list
 apt-get update --fix-missing    
 apt-get -y install apt-mirror
 
+# TIMEZONE =====================================================================
+export TZ="America/Sao_Paulo"
 
 
 # CONFIG =======================================================================
@@ -48,20 +50,17 @@ CONFIG=<<EOF
 #
 ############# end config ##############
 
-# Configuração padrão do apt-mirror. Obs: no set defaultarch, estou setando a arquitetura apenas para i386.
 set base_path /var/spool/apt-mirror
 set mirror_path $base_path/mirror
 set skel_path $base_path/skel
 set var_path $base_path/var
 set defaultarch i386
 
-# Repositórios que eu desejei espelhar: Debian Lenny e Debian Lenny Security, incluindo seus fontes.
-deb http://ftp.br.debian.org/debian/ lenny main contrib non-free
-deb-src http://ftp.br.debian.org/debian/ lenny main contrib non-free
-deb http://security.debian.org/debian-security lenny/updates main contrib non-free
-deb-src http://security.debian.org/debian-security lenny/updates main contrib non-free
+deb http://ftp.br.debian.org/debian/ wheezy main contrib non-free
+deb-src http://ftp.br.debian.org/debian/ wheezy main contrib non-free
+deb http://security.debian.org/debian-security wheezy/updates main contrib non-free
+deb-src http://security.debian.org/debian-security wheezy/updates main contrib non-free
 
-# O que queremos limpar. Obs.: Não entendi bem o conceito deste "clean" mas p/ mim sem essas  2 duas linhas não funcionou.
 clean http://ftp.br.debian.org/
 clean http://security.debian.org/
 EOF
@@ -123,3 +122,13 @@ EOF
 echo $VHOST >> /etc/apache2/conf.d/apt-repository.conf
 
 service apache2 restart
+
+
+# SHOW #########################################################################
+apt-get install -y lsb-release scrot
+cd ~./
+wget http://github.com/downloads/djmelik/archey/archey-0.2.8.deb
+dpkg -i archey-0.2.8.deb
+rm archey-0.2.8.deb
+cls
+archey
