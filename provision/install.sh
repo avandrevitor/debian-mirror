@@ -18,13 +18,14 @@ HOSTS=<<EOF
 ::1     localhost ip6-localhost ip6-loopback
 ff02::1 ip6-allnodes
 ff02::2 ip6-allrouters
+EOF
 echo $HOSTS >> /etc/hosts
 
 
 # UPDATE =======================================================================
 export DEBIAN_FRONTEND=noninteractive
 echo "deb ftp://ftp.br.debian.org/debian/ lenny main contrib non-free" >> /etc/apt/source.list
-apt-get update
+apt-get update --fix-missing    
 apt-get -y install apt-mirror
 
 
@@ -64,10 +65,10 @@ deb-src http://security.debian.org/debian-security lenny/updates main contrib no
 clean http://ftp.br.debian.org/
 clean http://security.debian.org/
 EOF
-echo $CONFIG > /etc/apt/mirror.list
+echo $CONFIG >> /etc/apt/mirror.list
 
 # SETUP ========================================================================
-#apt-mirror /etc/apt/mirror.list
+apt-mirror /etc/apt/mirror.list
 
 
 
@@ -75,8 +76,8 @@ echo $CONFIG > /etc/apt/mirror.list
 apt-get autoremove --purge -y  apache2 apache2.2-common apache2-doc apache2-mpm-prefork apache2-utils libmysqlclient15-dev php5 mysql-common
 apt-get install -y apache2 apache2-utils apache2-mpm-prefork
 a2enmod rewrite
-echo "ServerName localhost" >> /etc/apache2/httpd.conf
-echo "ServerName debian-mirror" >> /etc/apache2/httpd.conf
+echo "ServerName localhost" >> /etc/apache2/apache2.conf
+echo "ServerName debian-mirror" >> /etc/apache2/apache2.conf
 /etc/init.d/apache2 restart
 update-rc.d apache2 defaults
 chown -R www-data:vagrant /var/www

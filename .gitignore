@@ -1,0 +1,54 @@
+# Created by https://www.gitignore.io
+
+#!! ERROR: net is undefined. Use list command to see defined gitignore types !!#
+
+### NetBeans ###
+nbproject/
+nbproject/private/
+build/
+nbbuild/
+dist/
+nbdist/
+nbactions.xml
+nb-configuration.xml
+
+
+### Eclipse ###
+*.pydevproject
+.metadata
+.gradle
+bin/
+tmp/
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.settings/
+.loadpath
+
+# External tool builders
+.externalToolBuilders/
+
+# Locally stored "Eclipse launch configurations"
+*.launch
+
+# CDT-specific
+.cproject
+
+# PDT-specific
+.buildpath
+
+# sbteclipse plugin
+.target
+
+# TeXlipse plugin
+.texlipse
+
+
+### Vagrant ###
+.vagrant/
+
+
+# Cache Mirror ############################################################
+mirror/
